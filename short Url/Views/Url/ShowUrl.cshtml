@@ -1,0 +1,87 @@
+﻿@model List<UrlDto>;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+<div class="w-100 flex flex-row">
+    <div class="row w-100">
+        <div class="col-md-3 left-part-div">
+            <div class="inner-left-part-div">
+                <div class="logo" style="height:15%;">
+                    <img src="/img/AnchorzUp logo.svg" alt="Your Logo" />
+                </div>
+                <div class="left-part-content flex-column w-100">
+                    <h3 style="font-size:20px;">My shortended URLs</h3>
+                    @for (int i = 0; i < @Model.Count; i++)
+                    {
+                        <div class="content-lists w-100 pt-4">
+                            <a href="@Model[i].ShortedUrl">@Model[i].ShortedUrl</a>
+                            <div style="cursor:pointer;" onclick="DeleteUrl('@Model[i].ShortedUrl')"><i class="fa-regular fa-trash-can fa-beat" style="color: #000000;"></i></div>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+            <!-- Content for the first part goes here -->
+
+        </div>
+        <div class="col-md-9 right-part-div">
+            <form style="width:100%;display:flex;justify-content:space-evenly;height:100%;">
+                <div class="inner-right-part-div">
+                    <h2>URL Shortener</h2>
+
+                    <div class="right-part-inputs">
+                        <input type="text" id="longUrl" class="url-input" placeholder="Paste the URL to be shortened" />
+                        <select name="cars" id="expDate" class="select-input">
+                            <option value="0">Add expiration date</option>
+                            <option value="1">1 Minute</option>
+                            <option value="5">5 Minutes</option>
+                            <option value="10">10 Minutes</option>
+                            <option value="30">30 Minutes</option>
+                        </select>
+
+                    </div>
+                    <input type="button" id="btn" class="button" value="Shorten URL" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+            let btn = document.getElementById("btn");
+            btn.addEventListener("click",function(){
+            let urlInput = document.getElementById("longUrl");
+            let expDate = document.getElementById("expDate");
+            $.ajax({
+                    url: "/Url/CreateShortenerUrl",
+                    type: "Post",
+                    datatype: "Json",
+                    data: { longUrl: urlInput.value , expriedDate: expDate.value },
+                    success: function (result) {
+                            alert("Url Shortened Created Succesfully");
+                            window.location.reload();
+                        }
+                        // Move to a new location or you can do something else
+                })
+            });
+
+
+            function DeleteUrl(shorterUrl) {
+        $.ajax({
+            url: "/Url/DeleteUrl",
+            type: "Delete",
+            datatype: "Json",
+            data: { shorterUrl: shorterUrl },
+            success: function (result) {
+                alert("Url Shortened Deleted");
+                window.location.reload();
+            }
+            // Move to a new location or you can do something else
+
+        });
+    }
+
+</script>
