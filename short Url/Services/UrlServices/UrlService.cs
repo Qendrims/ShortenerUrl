@@ -81,6 +81,10 @@ namespace short_Url.Services.UrlServices
         {
             var url = _urlRepository.GetUrlByShortener(shorterUrl);
 
+            if (url.ExpiredDate != null && url.ExpiredDate < DateTime.Now)
+            {
+                return null;
+            }
 
             return url.LongUrl;
         }

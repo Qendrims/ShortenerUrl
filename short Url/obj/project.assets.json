@@ -2706,11 +2706,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kobit PC\\Desktop\\short Url\\short Url\\short Url.csproj",
+      "projectUniqueName": "C:\\Users\\Kobit PC\\Desktop\\ShortenerUrl\\short Url\\short Url.csproj",
       "projectName": "short Url",
-      "projectPath": "C:\\Users\\Kobit PC\\Desktop\\short Url\\short Url\\short Url.csproj",
+      "projectPath": "C:\\Users\\Kobit PC\\Desktop\\ShortenerUrl\\short Url\\short Url.csproj",
       "packagesPath": "C:\\Users\\Kobit PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kobit PC\\Desktop\\short Url\\short Url\\obj\\",
+      "outputPath": "C:\\Users\\Kobit PC\\Desktop\\ShortenerUrl\\short Url\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kobit PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

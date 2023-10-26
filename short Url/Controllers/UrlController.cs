@@ -42,7 +42,18 @@ namespace short_Url.Controllers
         public IActionResult RedirectToUrl(string shortenerUrl)
         {
             var longUrl = _urlService.RedirectToLongUrl(shortenerUrl);
+            if(longUrl == null)
+            {
+                return View("ExpiredView");
+            }
             return Redirect(longUrl);
+        }
+
+
+        [HttpGet]
+        public IActionResult ExpiredView()
+        {
+            return View();
         }
     }
 }
